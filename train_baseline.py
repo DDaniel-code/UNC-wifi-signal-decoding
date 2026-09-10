@@ -110,10 +110,9 @@ def plot_and_save(history, output_dir):
 
 
 def main():
-    cfg = Config()
+    cfg = Config.from_cli("outputs/deepmon")
     set_seed(cfg.random_seed)
     os.makedirs(cfg.output_dir, exist_ok=True)
-    os.makedirs(os.path.expanduser("~/logs"), exist_ok=True)
 
     print(f"Device: {DEVICE}")
     print(f"Config: {cfg}")

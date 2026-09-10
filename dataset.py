@@ -25,6 +25,8 @@ class PacketRecord:
 # ─── 文件发现 ───────────────────────────────────────────
 def discover_records(root_dir: str, split: str) -> List[PacketRecord]:
     split_dir = os.path.join(root_dir, split)
+    if not os.path.isdir(split_dir):
+        raise FileNotFoundError(f"Dataset split directory not found: {split_dir}")
     records = []
 
     for exp_dir in sorted(os.listdir(split_dir)):
@@ -151,6 +153,7 @@ class LSIGDataset(Dataset):
 
 # ─── 数据集构建 ──────────────────────────────────────────
 def build_datasets(cfg: Config) -> Tuple:
+    cfg.validate_data_root()
     print("Discovering records...")
     train_all = discover_records(cfg.root_dir, "Train")
     test_recs = discover_records(cfg.root_dir, "Test")

@@ -58,7 +58,7 @@ def run_epoch(model, loader, criterion, optimizer=None):
 def run_experiment(use_augment: bool, cfg: Config):
     cfg.use_phase_augment = use_augment
     label = "WithAugment" if use_augment else "NoAugment"
-    output_dir = f"outputs_aug_{label}"
+    output_dir = os.path.join(cfg.output_dir, label.lower())
     os.makedirs(output_dir, exist_ok=True)
 
     print(f"\n{'='*55}")
@@ -110,12 +110,13 @@ def run_experiment(use_augment: bool, cfg: Config):
 
 
 def main():
-    set_seed(42)
+    base_cfg = Config.from_cli("outputs/augmentation-ablation")
+    set_seed(base_cfg.random_seed)
     print(f"Device: {DEVICE}")
 
     results = []
     for use_aug in [True, False]:
-        cfg = Config()   # 每次新建，避免状态污染
+        cfg = Config(**vars(base_cfg))
         r = run_experiment(use_aug, cfg)
         results.append(r)
 

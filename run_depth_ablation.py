@@ -58,7 +58,7 @@ def run_epoch(model, loader, criterion, optimizer=None):
 def run_experiment(num_blocks: int, cfg: Config,
                    dl_train, dl_val, dl_test, train_recs):
 
-    output_dir = f"outputs_depth_{num_blocks}blocks"
+    output_dir = os.path.join(cfg.output_dir, f"{num_blocks}-blocks")
     os.makedirs(output_dir, exist_ok=True)
 
     model = DeepMonModel(
@@ -108,7 +108,7 @@ def run_experiment(num_blocks: int, cfg: Config,
 
 
 def main():
-    cfg = Config()
+    cfg = Config.from_cli("outputs/depth-ablation")
     set_seed(cfg.random_seed)
 
     print(f"Device: {DEVICE}")

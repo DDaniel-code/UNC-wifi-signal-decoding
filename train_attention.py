@@ -64,8 +64,7 @@ def run_epoch(model, loader, criterion, optimizer=None):
 
 
 def main():
-    cfg = Config()
-    cfg.output_dir = "outputs_attention"   # ← 不同的输出目录
+    cfg = Config.from_cli("outputs/attention")
     set_seed(cfg.random_seed)
     os.makedirs(cfg.output_dir, exist_ok=True)
 

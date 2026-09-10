@@ -64,6 +64,7 @@ class LSIGDatasetNoFFT(Dataset):
 
 
 def build_datasets_nofft(cfg: Config) -> Tuple:
+    cfg.validate_data_root()
     print("Discovering records (No-FFT)...")
     train_all = discover_records(cfg.root_dir, "Train")
     test_recs = discover_records(cfg.root_dir, "Test")

@@ -64,8 +64,7 @@ def run_epoch(model, loader, criterion, optimizer=None):
 
 
 def main():
-    cfg = Config()
-    cfg.output_dir = "outputs_nofft"    # 独立输出目录
+    cfg = Config.from_cli("outputs/no-fft")
     set_seed(cfg.random_seed)
     os.makedirs(cfg.output_dir, exist_ok=True)
 

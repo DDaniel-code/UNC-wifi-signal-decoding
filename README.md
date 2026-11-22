@@ -36,6 +36,15 @@ The historical CrossMAE evaluation logs report the following held-out test resul
 
 These numbers are preserved in [`results/historical/logs/crossmae_eval.log`](results/historical/logs/crossmae_eval.log). They are historical experiment records, not a fully reproducible benchmark: the CrossMAE model, dataset adapter, L-SIG decoding utility, and checkpoints used for that run are no longer available in this repository. The maintained runnable paths below cover the residual-CNN experiments only.
 
+## Posters
+
+Two posters from the UNC DATA 481 practicum team, as presented in May 2026. Numbers on the posters are the ones reported at the time and have not been recomputed.
+
+| L-SIG decoding (this repository) | Protocol classification (companion study) |
+|---|---|
+| [![Poster: Decoding Wi-Fi Packet Signals Using Deep Learning](docs/posters/lsig-decoding-poster.png)](docs/posters/lsig-decoding-poster.png) | [![Poster: Resolution Modeling, WiFi Protocol Classification Under Sub-Nyquist Constraints](docs/posters/protocol-classification-poster.png)](docs/posters/protocol-classification-poster.png) |
+| Decoding the 24-bit L-SIG field from undersampled IQ signals with supervised CNNs and masked-autoencoder pretraining. | The same team's related study of Wi-Fi protocol classification under 4× downsampling. Its code is not part of this repository. |
+
 ## Run the maintained experiments
 
 The packet dataset is not included. Supply a root with this structure:
@@ -78,6 +87,7 @@ run_*_ablation.py                 Controlled experiment sweeps
 archived_experiments/             Incomplete MAE-era source retained for context
 results/historical/               Original logs and figures
 docs/presentation_guide.pdf       Project presentation notes
+docs/posters/                     Practicum posters (PNG)
 tests/                             Data-shape and model smoke tests
 ```
 
